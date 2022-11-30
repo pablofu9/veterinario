@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primeraentrea.MenuController">
+   <children>
+      <JFXTextField fx:id="txtId" focusColor="RED" layoutX="165.0" layoutY="21.0" />
+      <JFXListView fx:id="lista" editable="true" layoutX="360.0" layoutY="21.0" onMouseClicked="#seleccionarPerro" prefHeight="341.0" prefWidth="219.0" />
+      <JFXTextField fx:id="txtNombre" layoutX="165.0" layoutY="94.0" />
+      <JFXTextField fx:id="txtRaza" layoutX="165.0" layoutY="161.0" />
+      <JFXTextField fx:id="txtPeso" layoutX="165.0" layoutY="238.0" />
+      <Label layoutX="21.0" layoutY="38.0" prefHeight="17.0" prefWidth="80.0" text="ID" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="109.0" prefHeight="17.0" prefWidth="80.0" text="Nombre">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="176.0" prefHeight="17.0" prefWidth="80.0" text="Raza">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="253.0" prefHeight="17.0" prefWidth="80.0" text="Peso">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnInsertar" layoutX="14.0" layoutY="293.0" onAction="#insertar" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Insertar" />
+      <JFXButton fx:id="btnLimpiar" layoutX="118.0" layoutY="293.0" onAction="#limpiarCampos" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Limpiar" />
+      <JFXButton fx:id="btnAnadir" layoutX="14.0" layoutY="337.0" onAction="#anadir" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Añadir" />
+      <JFXButton fx:id="btnModificar" layoutX="118.0" layoutY="337.0" onAction="#modificar" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Modificar" />
+   </children>
+</AnchorPane>
