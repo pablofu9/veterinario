@@ -113,4 +113,22 @@ public class CRUD_Perro {
         }
 
     }
+    public static void eliminarPerro(int id){
+        Connection con = Conexion.getConexion();
+
+        String sentenciaSql = "DELETE  from  perro WHERE id = ?";
+        PreparedStatement sentencia = null;
+        try {
+            con.setAutoCommit(false);
+            sentencia = con.prepareStatement(sentenciaSql);
+            sentencia.setInt(1, id);
+            sentencia.execute();
+
+            con.commit();
+            con.setAutoCommit(true);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+
+    }
 }

@@ -26,7 +26,7 @@ public class MenuController implements Initializable {
     private JFXListView <Perros> lista;
 
     @FXML
-    private JFXButton btnInsertar, btnLimpiar, btnModificar,btnRestablecer;
+    private JFXButton btnInsertar, btnLimpiar, btnModificar,btnRestablecer,btnEliminar;
 
 
     //METODO QUE INSERTAR SI LOS CAMPOS ESTAN RELLENOS
@@ -34,7 +34,7 @@ public class MenuController implements Initializable {
     private void insertar(){
 
         Perros p1 = new Perros(txtNombre.getText(), txtRaza.getText(), Integer.parseInt(txtPeso.getText()));
-        if(txtNombre.getText().isEmpty() || txtRaza.getText().isEmpty() || txtPeso.getText().isEmpty()){
+        if(txtNombre.getText().length()<1 || txtRaza.getText().length()<1|| txtPeso.getText().length()<1){
             Alertas.crearAlertaError("Rellena todos los campos");
         }else{
             conexion.CRUD_Perro.insertarPerro(p1);
@@ -98,6 +98,15 @@ public class MenuController implements Initializable {
     private void restablecer(){
         cargarLista();
         limpiarCampos();
+    }
+
+    @FXML
+    private void eliminar(){
+        Perros p1 =lista.getSelectionModel().getSelectedItem();
+        int idBorrar = p1.getId();
+        CRUD_Perro.eliminarPerro(idBorrar);
+        limpiarCampos();
+        cargarLista();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

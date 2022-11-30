@@ -45,5 +45,6 @@
       </Label>
       <JFXButton fx:id="btnFiltrar" layoutX="339.0" layoutY="184.0" onAction="#filtrar" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: FFA474;" text="Filtrar" />
       <JFXButton fx:id="btnRestablecer" layoutX="340.0" layoutY="248.0" onAction="#restablecer" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #22CE5B;" text="Restablecer" />
+      <JFXButton fx:id="btnEliminar" layoutX="316.0" layoutY="337.0" onAction="#eliminar" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: FF0000;" text="Eliminar" textFill="WHITE" />
    </children>
 </AnchorPane>
