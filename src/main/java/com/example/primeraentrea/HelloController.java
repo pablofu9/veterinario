@@ -24,6 +24,8 @@ public class HelloController {
     @FXML
     private JFXButton btnLogin;
 
+    //Boton de login, usa el crud usuarios para comprobar si el login es correcto
+    //PARA LOGEARSE: juan-juan
     @FXML
     private void login() throws IOException {
         String contrasena;

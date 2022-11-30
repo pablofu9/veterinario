@@ -16,6 +16,13 @@ public class Perros {
         this.peso = peso;
     }
 
+    public Perros(int id, String nombre, String raza, int peso) {
+        this.id = id;
+        this.nombre = nombre;
+        this.raza = raza;
+        this.peso = peso;
+    }
+
     public int getId() {
         return id;
     }
@@ -50,6 +57,6 @@ public class Perros {
 
     @Override
     public String toString() {
-        return nombre + " - "+ raza+ " - "+peso;
+        return nombre + " - "+ raza+ " - "+peso+"Kg";
     }
 }

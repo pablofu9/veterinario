@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primeraentrea.MenuController">
+<AnchorPane prefHeight="422.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.primeraentrea.MenuController">
    <children>
-      <JFXTextField fx:id="txtId" focusColor="RED" layoutX="165.0" layoutY="21.0" />
-      <JFXListView fx:id="lista" editable="true" layoutX="360.0" layoutY="21.0" onMouseClicked="#seleccionarPerro" prefHeight="341.0" prefWidth="219.0" />
-      <JFXTextField fx:id="txtNombre" layoutX="165.0" layoutY="94.0" />
-      <JFXTextField fx:id="txtRaza" layoutX="165.0" layoutY="161.0" />
-      <JFXTextField fx:id="txtPeso" layoutX="165.0" layoutY="238.0" />
+      <JFXTextField fx:id="txtId" editable="false" focusColor="RED" layoutX="108.0" layoutY="31.0" />
+      <JFXListView fx:id="lista" editable="true" layoutX="557.0" layoutY="16.0" onMouseClicked="#seleccionarPerro" prefHeight="341.0" prefWidth="219.0" />
+      <JFXTextField fx:id="txtNombre" layoutX="108.0" layoutY="104.0" />
+      <JFXTextField fx:id="txtRaza" layoutX="108.0" layoutY="171.0" />
+      <JFXTextField fx:id="txtPeso" layoutX="108.0" layoutY="248.0" />
       <Label layoutX="21.0" layoutY="38.0" prefHeight="17.0" prefWidth="80.0" text="ID" textFill="RED">
          <font>
             <Font size="14.0" />
@@ -36,7 +36,14 @@
       </Label>
       <JFXButton fx:id="btnInsertar" layoutX="14.0" layoutY="293.0" onAction="#insertar" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Insertar" />
       <JFXButton fx:id="btnLimpiar" layoutX="118.0" layoutY="293.0" onAction="#limpiarCampos" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Limpiar" />
-      <JFXButton fx:id="btnAnadir" layoutX="14.0" layoutY="337.0" onAction="#anadir" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Añadir" />
-      <JFXButton fx:id="btnModificar" layoutX="118.0" layoutY="337.0" onAction="#modificar" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: FFA474;" text="Modificar" />
+      <JFXButton fx:id="btnModificar" layoutX="14.0" layoutY="337.0" onAction="#modificar" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: FFA474;" text="Modificar" />
+      <JFXTextField fx:id="txtFiltro" layoutX="339.0" layoutY="117.0" promptText="buscar..." />
+      <Label layoutX="350.0" layoutY="73.0" prefHeight="20.0" prefWidth="113.0" text="Filtrar por razas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnFiltrar" layoutX="339.0" layoutY="184.0" onAction="#filtrar" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: FFA474;" text="Filtrar" />
+      <JFXButton fx:id="btnRestablecer" layoutX="340.0" layoutY="248.0" onAction="#restablecer" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #22CE5B;" text="Restablecer" />
    </children>
 </AnchorPane>

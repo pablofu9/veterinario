@@ -20,15 +20,16 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     @FXML
-    private JFXTextField txtId, txtNombre,txtRaza,txtPeso;
+    private JFXTextField txtId, txtNombre,txtRaza,txtPeso,txtFiltro;
 
     @FXML
     private JFXListView <Perros> lista;
 
     @FXML
-    private JFXButton btnInsertar, btnLimpiar, btnAnadir, btnModificar;
+    private JFXButton btnInsertar, btnLimpiar, btnModificar,btnRestablecer;
 
 
+    //METODO QUE INSERTAR SI LOS CAMPOS ESTAN RELLENOS
     @FXML
     private void insertar(){
 
@@ -38,12 +39,14 @@ public class MenuController implements Initializable {
         }else{
             conexion.CRUD_Perro.insertarPerro(p1);
             Alertas.crearAlertaInfo("Perro insertado");
+            cargarLista();
         }
     }
 
+    //METODO PARA CARGAR EL LISTVIEW
     public void cargarLista(){
         try{
-            List<Perros> perros = CRUD_Perro.getVehiculos();
+            List<Perros> perros = CRUD_Perro.getPerros();
             lista.setItems(FXCollections.observableList(perros));
         }catch (Exception e){
             Alertas.crearAlertaError("No se puede cargar la lista");
@@ -64,20 +67,37 @@ public class MenuController implements Initializable {
 
     @FXML
     private void limpiarCampos(){
-        txtId.setText(" ");
-        txtNombre.setText(" ");
-        txtRaza.setText(" ");
-        txtPeso.setText(" ");
+        txtId.setText("");
+        txtNombre.setText("");
+        txtRaza.setText("");
+        txtPeso.setText("");
+        txtFiltro.setText("");
     }
 
-    @FXML
-    private void anadir(){
-
-    }
 
     @FXML
     private void modificar(){
+        if(txtId.getText().isEmpty()){
+            Alertas.crearAlertaError("Debes seleccionar un perro en la tabla...");
+        }else{
+            Perros p1 = new Perros(Integer.parseInt(txtId.getText()), txtNombre.getText(), txtRaza.getText(), Integer.parseInt(txtPeso.getText()));
+            CRUD_Perro.modificarPerro(p1);
+            cargarLista();
+            limpiarCampos();
+        }
+    }
+    //Boton para filtrar segun el campo de texto y lo que escribas
+    @FXML
+    private void filtrar(){
+       List<Perros> perrosFilter=CRUD_Perro.getPerrosFiltro(txtFiltro.getText().toString());
+        lista.setItems(FXCollections.observableList(perrosFilter));
+    }
 
+    //Boton para restablecer la tabla despues de filtrar
+    @FXML
+    private void restablecer(){
+        cargarLista();
+        limpiarCampos();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

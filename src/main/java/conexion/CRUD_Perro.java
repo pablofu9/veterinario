@@ -39,7 +39,8 @@ public class CRUD_Perro {
         }
     }
 
-    public static List<Perros> getVehiculos() {
+    //METODO PARA DESPUES LLENAR EL TABLEVIEW
+    public static List<Perros> getPerros() {
         Connection con=Conexion.getConexion();
         List <Perros> listaPerros = new ArrayList<>();
 
@@ -61,5 +62,55 @@ public class CRUD_Perro {
         }
 
         return listaPerros;
+    }
+    public static List<Perros> getPerrosFiltro(String raza) {
+        Connection con=Conexion.getConexion();
+        List <Perros> listaPerros = new ArrayList<>();
+
+
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * from perro WHERE raza LIKE '%"+raza+"%'");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Perros perro = new Perros();
+                perro.setId(rs.getInt(1));
+                perro.setNombre(rs.getString(2));
+                perro.setRaza(rs.getString(3));
+                perro.setPeso(rs.getInt(4));
+
+                listaPerros.add(perro);
+            }
+        } catch (SQLException ex) {
+            Alertas.crearAlertaError("No encontrado...");
+        }
+
+        return listaPerros;
+    }
+    //Aqui hacemos una transaccion
+    public static void modificarPerro(Perros p1) {
+        Connection con = Conexion.getConexion();
+
+        try {
+            con.setAutoCommit(false);
+            String valueNombre = p1.getNombre();
+            String valueRaza = p1.getRaza();
+            int valuePeso = p1.getPeso();
+            int id = p1.getId();
+
+            String sentenciaSql = "UPDATE perro SET nombre = ?,raza = ?,peso=? WHERE id=?";
+            PreparedStatement sentencia = null;
+            sentencia = con.prepareStatement(sentenciaSql);
+            sentencia.setString(1, valueNombre);
+            sentencia.setString(2, valueRaza);
+            sentencia.setInt(3, valuePeso);
+            sentencia.setInt(4, id);
+            sentencia.executeUpdate();
+            con.commit();
+            con.setAutoCommit(true);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }
+
     }
 }
